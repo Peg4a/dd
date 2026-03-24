@@ -1,0 +1,245 @@
+:root {
+  --bg: #f2ede4;
+  --panel: #fffdf8;
+  --panel-2: #f9f4eb;
+  --ink: #1c1e21;
+  --muted: #5b6168;
+  --brand: #0f766e;
+  --brand-2: #d97706;
+  --ring: rgba(15, 118, 110, 0.25);
+  --danger: #b91c1c;
+  --success: #166534;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Trebuchet MS", "Segoe UI", Tahoma, sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 10% 20%, #f7efe3 0%, #ece5d8 36%, #e4ddcf 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.bg-shape {
+  position: fixed;
+  pointer-events: none;
+  filter: blur(2px);
+  z-index: 0;
+}
+
+.bg-shape-a {
+  width: 260px;
+  height: 260px;
+  border-radius: 38% 62% 62% 38%;
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.2), rgba(15, 118, 110, 0.08));
+  top: -40px;
+  right: -50px;
+  animation: drift 9s ease-in-out infinite;
+}
+
+.bg-shape-b {
+  width: 210px;
+  height: 210px;
+  border-radius: 59% 41% 50% 50%;
+  background: linear-gradient(135deg, rgba(15, 118, 110, 0.17), rgba(217, 119, 6, 0.05));
+  bottom: -50px;
+  left: -35px;
+  animation: drift 11s ease-in-out infinite reverse;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(4deg);
+  }
+}
+
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 36px 18px 42px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  margin-bottom: 20px;
+  animation: rise 540ms ease-out both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eyebrow {
+  display: inline-flex;
+  margin: 0;
+  background: rgba(15, 118, 110, 0.12);
+  color: #0b5e58;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 10px 0 8px;
+  font-size: clamp(1.7rem, 2.3vw + 1rem, 3rem);
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  max-width: 640px;
+}
+
+.translator-card {
+  background: linear-gradient(160deg, var(--panel) 0%, var(--panel-2) 100%);
+  border: 1px solid rgba(28, 30, 33, 0.08);
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  animation: rise 760ms ease-out both;
+}
+
+.mode-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+#modeLabel {
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.panes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pane-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+textarea {
+  width: 100%;
+  min-height: 190px;
+  resize: vertical;
+  border: 1px solid rgba(28, 30, 33, 0.14);
+  border-radius: 14px;
+  padding: 14px;
+  font: 500 1rem/1.55 "Segoe UI", Tahoma, sans-serif;
+  background: #fff;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+textarea:focus {
+  border-color: var(--brand);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+textarea[readonly] {
+  background: #fffdf8;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn,
+.link-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+
+.btn:hover,
+.link-btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active,
+.link-btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand), #0b5e58);
+  color: #f5fffe;
+  box-shadow: 0 8px 16px rgba(15, 118, 110, 0.28);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, var(--brand-2), #c05f09);
+  color: #fff8ec;
+}
+
+.btn-ghost {
+  background: rgba(28, 30, 33, 0.05);
+  color: #23272d;
+}
+
+.link-btn {
+  background: transparent;
+  color: var(--brand);
+  padding: 2px 4px;
+}
+
+.status {
+  margin: 12px 2px 0;
+  min-height: 20px;
+  color: var(--muted);
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+.status.success {
+  color: var(--success);
+}
+
+@media (min-width: 860px) {
+  .panes {
+    grid-template-columns: 1fr 1fr;
+  }
+}
